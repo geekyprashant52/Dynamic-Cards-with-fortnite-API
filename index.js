@@ -1,6 +1,7 @@
 console.log("Script loaded");
 
 let mainListWrapper = document.getElementById("item-cards-wrapper");
+let loadingText = document.getElementById("loading");
 
 let createCardsDynamically = (url, name, desc) => {
   let cardItem = document.createElement("div");
@@ -28,6 +29,7 @@ var http = new XMLHttpRequest();
 http.open("GET", "https://fortnite-api.theapinetwork.com/store/get", true);
 http.onreadystatechange = function () {
   if (this.readyState === 4) {
+    loadingText.style.display = "none";
     var response = JSON.parse(this.responseText);
     let dataArr = response.data;
     dataArr.map((items) => {
